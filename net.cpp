@@ -18,12 +18,10 @@ Net::Net()
 	m.lock(); // in case some process try to modify the net
 	mode = NetModeStatic;
 	expected = current = ThreadStateDead;
-	capnode = INI_CAP;
-	caplink = INI_CAP;
-	numnode = 0; // input and output node
-	numlink = 0; // no links in net
-	nodes = new Node[capnode];
-	links = new Link[caplink];
+	cap = INI_CAP;
+	num = 0; // input and output node
+	nodes = new Node[cap];
+	lists = new List[cap];
 	addNode(2); // add input and output node
 	numfreenode = 0;
 	numfreelink = 0;
