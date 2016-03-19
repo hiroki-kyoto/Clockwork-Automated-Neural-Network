@@ -1,2 +1,2 @@
-# Clock-Driven-Automated-Neural-Network
-Clock Driven Automated Neural Network
+# Clockwork-Automated-Neural-Network
+Clockwork Automated Neural Network
