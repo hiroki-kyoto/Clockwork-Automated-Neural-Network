@@ -58,16 +58,22 @@ private:
 	ThreadState current;
 	ThreadState expected;
 	
-	int cap; // capcity of node
-	int num; // number of node
+	int nodecap; // capcity of node
+	int nodenum; // number of node
+	int weitcap; // cap of weit
+	int weitnum; // number of weit
 	
 	Node * nodes; // nodes of net
 	List * lists; // connection list of net
+	double * weits; // weight list
 
-	int freecap; // capcity for free node
-	int freenum; // number of free node
+	int nodefreenum; // number of free node
+	int weitfreenum; // number of free weit
+	int nodefreecap; // cap of free node
+	int weitfreecap; // cap of free weit
 
-	int * freeindex; // available index of node list
+	int * nodefreeid; // available index of node list
+	int * weitfreeid; // available index of weit list
 	
 	thread t; // thread to control net updating process
 	mutex m; // mutex lock to control net updating process

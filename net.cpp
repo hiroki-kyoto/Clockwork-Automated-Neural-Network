@@ -18,17 +18,20 @@ Net::Net()
 	m.lock(); // in case some process try to modify the net
 	mode = NetModeStatic;
 	expected = current = ThreadStateDead;
-	cap = INI_CAP;
-	num = 0; // input and output node
-	nodes = new Node[cap];
-	lists = new List[cap];
+	nodecap = INI_CAP;
+	nodenum = 0;
+	weitcap = INI_CAP;
+	weitnum = 0;
+	nodes = new Node[nodecap];
+	lists = new List[nodecap];
+	weits = new double[weitcap];
 	addNode(2); // add input and output node
-	numfreenode = 0;
-	numfreelink = 0;
-	capfreenode = INI_CAP;
-	capfreelink = INI_CAP;
-	freenodes = new int[capfreenode];
-	freelinks = new int[capfreelink];
+	nodefreenum = 0;
+	weitfreenum = 0;
+	nodefreecap = INI_CAP;
+	weitfreecap = INI_CAP;
+	nodefreeid = new int[nodefreecap];
+	weitfreeid = new int[weitfreecap];
 	m.unlock(); // release control right
 }
 
@@ -39,9 +42,10 @@ Net::~Net()
 	kill();
 	// recycle memory
 	delete [] nodes;
-	delete [] links;
-	delete [] freenodes;
-	delete [] freelinks;
+	delete [] lists;
+	delete [] weits;
+	delete [] nodefreeid;
+	delete [] weitfreeid;
 	// wait until thread over
 	cout<<"Net Destroyed #"<<id<<endl;
 }
